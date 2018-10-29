@@ -6,6 +6,11 @@ var fs = require('fs');
 // argv allows for two pieces of user input:  name and repo name
 var myArg = process.argv.slice(2);
 
+// kick user out if 2 arguments are not provided
+if(myArg.length !== 2) {
+  return process.exit();
+}
+
 // pulls in two arguments to add to a URL which provides a specifc users repo
 // arg0 is the user name; agr1 is the repo name
 function getRepoContributors(repoOwner, repoName, cb) {
@@ -47,7 +52,8 @@ function downloadImageByUrl(url, filePath) {
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
-  console.log("Errors:", err);
-  console.log("Result:", result);
+  // previously used printing from exercises
+  // console.log("Errors:", err);
+  // console.log("Result:", result);
 });
 
