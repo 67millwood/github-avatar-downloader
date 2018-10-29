@@ -8,6 +8,7 @@ var myArg = process.argv.slice(2);
 
 // kick user out if 2 arguments are not provided
 if(myArg.length !== 2) {
+  console.log("Nope.  Not what we wanted");
   return process.exit();
 }
 
