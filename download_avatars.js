@@ -2,10 +2,11 @@ var request = require('request');
 var mysecrets = require('./secrets.js')
 var fs = require('fs');
 
+var myArg = process.argv.slice(2);
 
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
-    url : "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
+    url : "https://api.github.com/repos/" + myArg[0] + "/" + myArg[1] + "/contributors",
     headers: {
       'User-Agent': '67millwood',
       'Authorization': "token " + mysecrets.GITHUB_TOKEN
@@ -33,7 +34,7 @@ function downloadImageByUrl(url, filePath) {
          console.log("this is not working");
          throw err;
        })
-       .pipe(fs.createWriteStream('./pictures/' + filePath[a]));
+       .pipe(fs.createWriteStream('./pictures/last/' + filePath[a]));
     }
   }
 
